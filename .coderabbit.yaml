@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
+
+inheritance: true
+
+reviews:
+  path_instructions:
+    - path: "renovate-config.json"
+      instructions: |
+        Vid ändringar i denna delade Renovate-preset, kontrollera berörda
+        alternativ mot aktuellt Renovate-schema och deras effekt tillsammans
+        med config:best-practices och ignorePresets. Beakta att ändringen
+        kan påverka konsumerande repon via local>pissmyran/.github:renovate-config.
+        Vid ändringar i rangeStrategy eller packageRules, kontrollera
+        versionsintervall, digest-uppdateringar och vilka uppdateringstyper
+        som grupperas. Kontrollera särskilt om major-uppdateringar oavsiktligt
+        hamnar i gruppen för minor, patch och digest.
+        Vid ändringar i customManagers, kontrollera managerFilePatterns och
+        matchStrings tillsammans mot representativa Dockerfile-, .sh- och
+        workflow-sökvägar samt npx --yes med både vanliga och scopade npm-paket.
+        Kontrollera att depName och currentValue fångar rätt paket och version.
+        Vid ändringar i automerge, vulnerabilityAlerts eller platformCommit,
+        kontrollera samspelet mellan globala värden och underordnade regler
+        samt GitHub-plattformens stöd. Skilj aktiverad automerge från
+        verifierade behörigheter, obligatoriska kontroller och merge queue
+        i konsumerande repon. Dra inte slutsatsen att GitHub-regler uppfylls
+        eller att commits är signerade enbart från denna preset.
