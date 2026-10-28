@@ -23,7 +23,6 @@
   "assignAutomerge": true,
   "automerge": true,
   "automergeType": "pr",
-  "platformAutomerge": true,
   "automergeStrategy": "squash",
   "rebaseWhen": "conflicted",
   "prHourlyLimit": 0,
