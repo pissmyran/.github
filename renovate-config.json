@@ -2,13 +2,12 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "description": "Gemensam Renovate-konfiguration för organisationen pissmyrans repon; varje repo ärver den med local>pissmyran/.github:renovate-config. Allt följer senaste versionen: intervall behålls och flyttas upp, inget låses till ett versionsnummer. Actions och Docker-bilder låses bara till digest, som GitHub kräver, och följer ändå senaste. Uppdateringar kommer så fort de finns och går genom samma kontroller, granskning och merge queue som annat arbete.",
   "extends": [
-    "config:best-practices"
+    "config:best-practices",
+    "schedule:automergeDaily", 
+    ":dependencyDashboard"
   ],
   "ignorePresets": [
     ":pinDevDependencies"
-  ],
-  "dependencyDashboard": [
-    "true"
   ],
   "timezone": "Europe/Stockholm",
   "schedule": [
