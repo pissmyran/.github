@@ -7,8 +7,9 @@
   "ignorePresets": [
     ":pinDevDependencies"
   ],
-  "dependencyDashboard": 
-  "true"
+  "dependencyDashboard": [
+    "true"
+  ],
   "timezone": "Europe/Stockholm",
   "schedule": [
     "at any time"
