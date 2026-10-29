@@ -2,6 +2,10 @@
 
 Extra rules for `dumpen`, `jobb`, `klarsprak` and `politiker`: Cloudflare Workers services with a Docker image for self-hosting. They share the pattern below. Everything else is in [GOVERNANCE.md](GOVERNANCE.md).
 
+## Checks
+
+Besides the repository's own commands, run for what you changed: `npx --yes prettier@latest --check .` (settings in `.prettierrc.json`, fix with `--write`), `shellcheck` on `.sh` files and `jq empty` on `.json` files. Tests that read source files must not depend on formatting; call the real code instead.
+
 ## Placeholders and deploy
 
 - The code is generic and contains only `__NAME__` placeholders. Declare every placeholder in use in `cloudflare.example.env` with a sample value and a comment on where the real value comes from.

@@ -5,7 +5,8 @@ Extra rules for `bastion` (the hub, no code) and `bastion_apple`, `bastion_linux
 - `main` in the four platform repositories also requires signed commits.
 - Issues that concern one platform belong in that platform's repository (move them with Transfer issue). Issues for every platform belong in `bastion`.
 - The documentation is a Zensical site: `docs/`, `zensical.toml` and `overrides/home.html`. New pages go into `nav` in `zensical.toml`. Build locally with `pip install --upgrade zensical && zensical build --strict`.
-- Releases are driven by pull request titles and `.github/release-required-checks`.
+- Releases are driven by pull request titles and `.github/release-required-checks`. The platform repositories describe the process in `docs/release.md`.
+- Older platform code still has Swedish comments and UI text. Write every new or changed comment and string in English.
 - The sync format is owned by `bastion_apple`. The other platforms hold copies of its fixtures. When the format changes, follow `docs/sync-format.md`.
 - Values that reach a shell go through `env:` and quoted variables.
 - Change build paths and manifests together with the documentation.
