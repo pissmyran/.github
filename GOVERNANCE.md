@@ -1,6 +1,6 @@
 # Governance
 
-Rules for every repository under `pissmyran`. Read this file at the start of every session. Each repository's `AGENTS.md` links here and holds only what is specific to that repository. `CLAUDE.md` in each repository only imports `AGENTS.md`.
+Rules for every repository under `pissmyran`. Read this file at the start of every session. The owner's instructions always take precedence over this and every other document. Each repository's `AGENTS.md` links here and holds only what is specific to that repository. `CLAUDE.md` in each repository only imports `AGENTS.md`.
 
 - [SERVICES.md](SERVICES.md): extra rules for `dumpen`, `jobb`, `klarsprak` and `politiker`.
 - [BASTION.md](BASTION.md): extra rules for `bastion` and the `bastion_*` repositories.
