@@ -1,26 +1,88 @@
 # yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
 
+# Inherit central settings from pissmyran/coderabbit.
 inheritance: true
 
 reviews:
   path_instructions:
     - path: "renovate-config.json"
       instructions: |
-        Vid ändringar i denna delade Renovate-preset, kontrollera berörda
-        alternativ mot aktuellt Renovate-schema och deras effekt tillsammans
-        med config:best-practices och ignorePresets. Beakta att ändringen
-        kan påverka konsumerande repon via local>pissmyran/.github:renovate-config.
-        Vid ändringar i rangeStrategy eller packageRules, kontrollera
-        versionsintervall, digest-uppdateringar och vilka uppdateringstyper
-        som grupperas. Kontrollera särskilt om major-uppdateringar oavsiktligt
-        hamnar i gruppen för minor, patch och digest.
-        Vid ändringar i customManagers, kontrollera managerFilePatterns och
-        matchStrings tillsammans mot representativa Dockerfile-, .sh- och
-        workflow-sökvägar samt npx --yes med både vanliga och scopade npm-paket.
-        Kontrollera att depName och currentValue fångar rätt paket och version.
-        Vid ändringar i automerge, vulnerabilityAlerts eller platformCommit,
-        kontrollera samspelet mellan globala värden och underordnade regler
-        samt GitHub-plattformens stöd. Skilj aktiverad automerge från
-        verifierade behörigheter, obligatoriska kontroller och merge queue
-        i konsumerande repon. Dra inte slutsatsen att GitHub-regler uppfylls
-        eller att commits är signerade enbart från denna preset.
+        This shared preset affects repositories that extend
+        local>pissmyran/.github:renovate-config.
+        Check changed options against the current Renovate schema and
+        documentation, including their interaction with config:best-practices
+        and ignorePresets.
+        For rangeStrategy or packageRules changes, check version ranges,
+        digest updates, and update-type grouping. Check that major updates
+        do not enter the non-major group unintentionally.
+        For customManagers changes, check managerFilePatterns and matchStrings
+        together against representative Dockerfile, shell script, and workflow
+        paths. Cover npx --yes with ordinary and scoped npm packages.
+        Check that depName and currentValue capture the intended values.
+        For automerge, vulnerabilityAlerts, or platformCommit changes, check
+        global values, rule overrides, and GitHub platform support.
+        Do not treat enabled automerge as proof of permissions, passing
+        required checks, merge-queue compliance, or signed commits.
+        Report downstream effects without claiming consumers were inspected.
+
+    - path: "{GOVERNANCE,SERVICES,BASTION}.md"
+      instructions: |
+        These documents define shared rules for other repositories.
+        Check that GOVERNANCE.md keeps account-wide rules, SERVICES.md keeps
+        service-specific rules, and BASTION.md keeps Bastion-specific rules.
+        Keep rules for a single repository in that repository's AGENTS.md.
+        For changed commands or platform claims, verify their accuracy against
+        available source or current official documentation.
+        Identify conflicts between changed rules and the other shared files.
+        Do not apply service or Bastion requirements to unrelated repositories.
+        Do not claim downstream compliance without inspecting those repositories.
+
+    - path: "README.md"
+      instructions: |
+        Check that the inventory matches files actually present here.
+        Distinguish GitHub community-file fallbacks from explicit references
+        used for shared rules, Renovate presets, and CodeRabbit configuration.
+        Verify changed fallback claims against current GitHub documentation,
+        including public-repository eligibility and template replacement rules.
+        README.md is not inherited or merged into other repositories.
+        Workflows, CODEOWNERS, and LICENSE are not community-file fallbacks.
+        Do not describe a supported fallback file as present unless it exists.
+
+    - path: ".github/ISSUE_TEMPLATE/**"
+      instructions: |
+        These templates can become defaults for other public repositories.
+        Check Markdown front matter or issue-form YAML against the applicable
+        GitHub format. Do not apply issue-form requirements to Markdown files.
+        If labels, assignees, or issue types change, verify their availability
+        where evidence is accessible. State unverified downstream assumptions.
+        Check that changed prompts warn against posting secrets or personal
+        data and do not request confidential information.
+        For local-template instructions, check whether GitHub replaces the
+        shared template set rather than combining it with local templates.
+
+    - path: ".github/FUNDING.yml"
+      instructions: |
+        This file can supply a fallback sponsor button to other repositories.
+        Check changed keys and value shapes against GitHub's FUNDING.yml format.
+        Treat changed funding destinations as sensitive routing changes.
+        Do not invent or silently substitute a recipient.
+        If a change adds personal account details or payment identifiers,
+        flag the conflict with GOVERNANCE.md without repeating the values.
+
+    - path: ".coderabbit.yaml"
+      instructions: |
+        Validate changed settings against the current CodeRabbit schema.
+        Preserve inheritance from the central coderabbit repository.
+        Keep local configuration focused on this repository's risks.
+        Check keyed-list merging and matching path overrides so local entries
+        do not unintentionally replace central guidance.
+        Preserve inherited security scanners, review scope, and advisory checks.
+        Do not enable paid features or automatic approvals as part of this task.
+        Do not claim YAML settings grant permissions or billing entitlements.
+
+knowledge_base:
+  code_guidelines:
+    enabled: true
+    filePatterns:
+      - "**/AGENTS.md"
+      - "GOVERNANCE.md"

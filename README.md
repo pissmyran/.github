@@ -25,9 +25,32 @@ GitHub treats a repository named `.github` as a source of fallback files. If ano
 
 A repository that wants its own issue template must provide the whole set it needs: the fallback applies per kind of file, so one local template replaces the shared templates of that kind.
 
+## CodeRabbit review coverage
+
+[.coderabbit.yaml](.coderabbit.yaml) keeps `inheritance: true` to inherit the
+base configuration from `pissmyran/coderabbit`. Central settings stay there;
+this repository adds review instructions for the shared rule files, Renovate
+preset, README, issue templates, funding configuration and CodeRabbit configuration.
+`GOVERNANCE.md` and `**/AGENTS.md` are explicit code-guideline sources.
+`SERVICES.md` and `BASTION.md` are review targets, not general guidelines here.
+These local settings apply only to this repository and do not propagate to consumers.
+
+[CodeRabbit inheritance](https://docs.coderabbit.ai/configuration/configuration-inheritance)
+merges path instructions by their exact `path` key: a local entry replaces a
+central entry with the same key, while distinct central entries remain.
+After configuration changes, inspect the resolved configuration on a pull request:
+
+```text
+@coderabbitai configuration
+```
+
+Confirm that inherited review scope, security scanners and advisory checks remain
+intact, and that automatic approvals and paid finishing touches remain disabled.
+Schema validation alone cannot confirm these effective settings.
+
 ## Changing this repository
 
-A change here reaches every repository, so weigh it against all of them. Follow [GOVERNANCE.md](GOVERNANCE.md): own branch, squash-merged pull request, no personal values and no secrets.
+Changes to shared rules, presets or community defaults can affect consuming repositories, so weigh their scope carefully. Follow [GOVERNANCE.md](GOVERNANCE.md): own branch, squash-merged pull request, no personal values and no secrets.
 
 - Rule files stay short and hold only what applies to more than one repository. Rules for a single repository belong in its `AGENTS.md`.
 - Changes to `renovate-config.json` affect every dependency update; check them against the [Renovate schema](https://docs.renovatebot.com/renovate-schema.json).
